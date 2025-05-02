@@ -28,14 +28,15 @@ const Hero: React.FC<HeroProps> = ({ onBeginClick }) => {
         </p>
         
         <div className="mt-10 md:mt-12 flex flex-col items-center gap-4">
-          <Button 
-            onClick={onBeginClick} 
-            className="bg-royal-blue hover:bg-royal-blue/90 text-white px-8 py-6 text-lg rounded-md shadow-lg opacity-0 animate-fade-in-up stagger-3 animate-pulse-slow glowing-button"
-            style={{ animationFillMode: 'forwards' }}
-            aria-label="Begin your journey with Kalpataru"
-          >
-            Begin Your Contribution <ArrowRight className="ml-2" />
-          </Button>
+          <Link to="/anthem">
+            <Button 
+              className="bg-royal-blue hover:bg-royal-blue/90 text-white px-8 py-6 text-lg rounded-md shadow-lg opacity-0 animate-fade-in-up stagger-3 animate-pulse-slow glowing-button"
+              style={{ animationFillMode: 'forwards' }}
+              aria-label="Begin your journey with Kalpataru"
+            >
+              Begin Your Contribution <ArrowRight className="ml-2" />
+            </Button>
+          </Link>
           
           <Link 
             to="/explore" 
