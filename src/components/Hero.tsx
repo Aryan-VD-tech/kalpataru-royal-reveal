@@ -2,7 +2,8 @@
 import React from 'react';
 import KalpataruLogo from './KalpataruLogo';
 import { Button } from './ui/button';
-import { Building, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   onBeginClick: () => void;
@@ -15,33 +16,38 @@ const Hero: React.FC<HeroProps> = ({ onBeginClick }) => {
         <KalpataruLogo />
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-4 z-10">
-        <Building className="text-royal-blue w-14 h-14 mb-4 md:mb-6 animate-float" />
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-4 z-10 max-w-3xl mx-auto">
+        <div className="building-image animate-float mb-6"></div>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-royal-blue mt-8 md:mt-0 opacity-0 animate-fade-in-up stagger-1" style={{ animationFillMode: 'forwards' }}>
-          Welcome to Kalpataru
+          Welcome to<br />Kalpataru Anthem Creation
         </h1>
         
-        <p className="text-xl md:text-2xl text-gray-600 mt-4 md:mt-6 font-light max-w-md mx-auto opacity-0 animate-fade-in-up stagger-2" style={{ animationFillMode: 'forwards' }}>
-          Experience royalty in every home.
+        <p className="text-xl md:text-2xl text-gray-600 mt-6 md:mt-8 font-light max-w-2xl mx-auto opacity-0 animate-fade-in-up stagger-2" style={{ animationFillMode: 'forwards' }}>
+          Join us in creating a collective anthem by contributing a single word that represents what Kalpataru means to you.
         </p>
         
-        <div className="mt-6 md:mt-10 flex items-center gap-2 opacity-0 animate-fade-in-up stagger-3" style={{ animationFillMode: 'forwards' }}>
-          <MapPin className="text-royal-blue" />
-          <span className="text-gray-600">Premium locations across the city</span>
+        <div className="mt-10 md:mt-12 flex flex-col items-center gap-4">
+          <Button 
+            onClick={onBeginClick} 
+            className="bg-royal-blue hover:bg-royal-blue/90 text-white px-8 py-6 text-lg rounded-md shadow-lg opacity-0 animate-fade-in-up stagger-3 animate-pulse-slow glowing-button"
+            style={{ animationFillMode: 'forwards' }}
+            aria-label="Begin your journey with Kalpataru"
+          >
+            Begin Your Contribution <ArrowRight className="ml-2" />
+          </Button>
+          
+          <Link 
+            to="/explore" 
+            className="text-royal-blue hover:text-royal-blue/80 mt-4 opacity-0 animate-fade-in-up stagger-4 underline-animation"
+            style={{ animationFillMode: 'forwards' }}
+          >
+            Explore Our Properties
+          </Link>
         </div>
-        
-        <Button 
-          onClick={onBeginClick} 
-          className="mt-8 md:mt-12 bg-royal-blue hover:bg-royal-blue/90 text-white px-8 py-6 text-lg rounded-md shadow-lg opacity-0 animate-fade-in-up stagger-3 animate-pulse-slow"
-          style={{ animationFillMode: 'forwards' }}
-          aria-label="Begin your journey with Kalpataru"
-        >
-          Begin <ArrowRight className="ml-2" />
-        </Button>
       </div>
       
-      <div className="buildings"></div>
+      <div className="buildings animate-glitter"></div>
     </div>
   );
 };
