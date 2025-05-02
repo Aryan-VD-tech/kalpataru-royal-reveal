@@ -100,9 +100,32 @@
   }
 }
 
-/* Roof-shaped banner styles */
+/* City background styles */
+.city-background {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%231D4ED8" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,197.3C672,192,768,160,864,165.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>'), 
+                  url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%231D4ED8" fill-opacity="0.05" d="M0,256L48,245.3C96,235,192,213,288,202.7C384,192,480,192,576,165.3C672,139,768,85,864,96C960,107,1056,181,1152,202.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 40%, 100% 20%;
+}
+
+/* Building silhouettes */
+.buildings {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg"><g fill="%231D4ED8" fill-opacity="0.2"><rect x="100" y="100" width="40" height="200"/><rect x="150" y="150" width="60" height="150"/><rect x="220" y="50" width="30" height="250"/><rect x="260" y="120" width="50" height="180"/><rect x="320" y="80" width="70" height="220"/><rect x="400" y="140" width="40" height="160"/><rect x="460" y="60" width="55" height="240"/><rect x="530" y="100" width="45" height="200"/><rect x="590" y="30" width="35" height="270"/><rect x="640" y="130" width="60" height="170"/><rect x="720" y="90" width="50" height="210"/><rect x="780" y="120" width="40" height="180"/><rect x="840" y="60" width="30" height="240"/><rect x="880" y="110" width="65" height="190"/><rect x="960" y="150" width="45" height="150"/><rect x="1020" y="70" width="55" height="230"/><rect x="1090" y="100" width="40" height="200"/></g></svg>');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  z-index: 0;
+}
+
+/* Enhanced roof-shaped banner styles */
 .roof-banner {
-  @apply relative bg-royal-blue text-white h-12 flex items-center justify-center;
+  @apply relative bg-royal-blue text-white h-12 flex items-center justify-center shadow-lg z-10;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
 }
 
 .roof-banner::before,
@@ -128,5 +151,64 @@
 }
 
 .pill {
-  @apply bg-white text-royal-blue px-4 py-1 rounded-full font-medium;
+  @apply bg-white text-royal-blue px-6 py-1.5 rounded-full font-medium shadow-sm transition-all duration-300 transform;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
 }
+
+/* Animation keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s infinite;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+/* Enhanced staggered animation timing */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.3s; }
+.stagger-3 { animation-delay: 0.5s; }
+
